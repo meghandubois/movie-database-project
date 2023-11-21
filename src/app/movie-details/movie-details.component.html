@@ -1,0 +1,30 @@
+<!-- src/app/movie-details/movie-details.component.html -->
+
+<div class="container mt-3">
+    <div class="card" *ngIf="movieDetails">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + movieDetails.poster_path" class="card-img" alt="Movie Poster">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <a [routerLink]="['/']" class="btn btn-primary mb-3">
+              <span>&lt; Back to Home</span>
+            </a>
+            <h5 class="card-title">{{ movieDetails.title }}</h5>
+            <p class="card-text">{{ movieDetails.overview }}</p>
+            <p class="card-text"><strong>Release Date:</strong> {{ movieDetails.release_date }}</p>
+            <p class="card-text"><strong>Genre:</strong> {{ getGenres() }}</p>
+            <p class="card-text"><strong>Runtime:</strong> {{ movieDetails.runtime }} minutes</p>
+            <p class="card-text"><strong>Vote Average:</strong> {{ movieDetails.vote_average }}</p>
+            <p class="card-text"><strong>Production Companies:</strong> {{ getProductionCompanies() }}</p>
+            <h5 class="card-title mt-3">Cast</h5>
+            <ul>
+              <li *ngFor="let cast of getCast()">{{ cast.name }} ({{ cast.character }})</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
